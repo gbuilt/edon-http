@@ -2,33 +2,33 @@
 A Route-less Node HTTP Server - the simplest way possible. Old-school is so cool...
 
 
-Customize your server:
+Route-less structure:
+
+	Two key directories: '/private/' and '/public/'.
+
+		'/private/'
+			Server-side Nodejs files go here
+			in whatever vanilla, MVC, clean
+			or crazy directory structure you want.
+			Example: a url of 'htp://site.com/login'
+			will hit the nodejs file '/private/login.js'
+			Nothing inside the /private/ directory
+			can be accessed accidentally like a
+			client-side .js file. Your source is safe.
+
+		'/public/'
+			Client-side files go here, like:
+			/public/scripts/jquery.min.js
+			/public/styles/global-styles.css
+			/public/images/cat.gif.
+			These will use their /public/ base,
+			meaning: <link type="text/css" rel="stylesheet" href="/public/styles/global-styles.css">
+
+		Your default landing page when nothing is specified in the URL, ie. 'http://site.com/' will hit 'private/index.js'.
 
 
-	Specify your root 'Private' and 'Public' folders.
 
-		These are the defaults:
-
-		this.serverDir = "/private/";  	// This is where your server js files live, in whatever vanilla, MVC, clean or crazy folder structure you want.
-		this.clientDir = "/public/"; 	// This is where your client-side content lives. ie. /public/scripts/jquery.min.js, /public/styles/global-styles.css.
-		this.indexFile = "/index";   	// This is your default landing page when nothing is specified in the URL. ie. /index.js
-
-
-
-	Default mime-types (Of course you can add more as needed):
-
-		fileTypes = {
-			'.html': 'text/html',
-			'.css':  'text/css',
-			'.js': 	 'text/javascript',
-			'.json': 'application/json',
-			'.gif':  'image/gif',
-			'.jpg':  'image/jpg',
-			'.png':  'image/png'
-		},
-
-
-Usage Example:
+A basic node http server start file:
 
 	Here is a sample server.js file which you would start by running "node server".
 	In this example below you can specify the port to listen on "node server 8080" or "sudo node server 80".
@@ -55,3 +55,21 @@ Usage Example:
 
 	console.log("Edon Server is running!\n\nListening on port: " + port + ".\n\n\n")
 	------------------------------------------------------------------------------------
+
+
+
+
+There are additional functions in edon-http for static file usage:
+
+	Referencing 'global.edon = new Edon();' from the sample 'server.js' shown above:
+
+	INC - to include static file content:
+		response.write(global.edon.inc("./views/login_form.html"));
+
+	REQR - to include nodejs file functions
+		self.reqr(path.resolve(global.edon.serverDir + "error/404notfound.js"));  // self.serverDir = '/private/'
+
+	QS2OBJ
+		request.reqUrlParams = global.edon.qs2obj(request.reqUrl.query);
+
+

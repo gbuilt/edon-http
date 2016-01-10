@@ -15,6 +15,7 @@ module.exports = (function(){
 
 			// http head content-type options
 			fileTypes = {
+				'.htm':  'text/html',
 				'.html': 'text/html',
 				'.css':  'text/css',
 				'.js': 	 'text/javascript',
@@ -257,9 +258,6 @@ module.exports = (function(){
 		this.serverDir = "/private/";
 		this.clientDir = "/public/";
 		this.indexFile = "/index";
-
-		this.serverPath = path.normalize(this.serverDir);
-		this.clientPath = path.normalize(this.clientDir);
 
 		this.reqr = function(relFilePath, request, response) {
 			console.log("Inside reqr: " + relFilePath);
