@@ -1,0 +1,35 @@
+{
+  "name": "edon-http",
+  "version": "0.0.1",
+  "description": "A Route-less Node HTTP Server - the simplest way possible.",
+  "main": "edon-http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbuilt/edon-http"
+  },
+  "keywords": [
+    "HTTP",
+    "http",
+    "server",
+    "http-server",
+    "node-server",
+    "web-server",
+    "route",
+    "router",
+    "routes",
+    "route-less",
+    "auto-route",
+    "static-route",
+    "port",
+    "custom-port"
+  ],
+  "author": "GBuilt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbuilt/edon-http/issues"
+  },
+  "homepage": "https://github.com/gbuilt/edon-http"
+}
